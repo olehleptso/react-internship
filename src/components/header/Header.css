@@ -1,0 +1,40 @@
+.header {
+    background-color: #b3d9e6;
+}
+
+.inner-header {
+    display: flex;
+    justify-content: space-between;
+    width: 1250px;
+    margin: auto;
+    padding: 20px 0;
+}
+.inner-header img {
+    width: 32px;
+}
+
+.header-menu {
+    flex-basis: 55%;
+}
+
+.header-nav {
+    display: flex;
+    justify-content: space-between;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.header-nav li a {
+    font-family: 'Montserrat', sans-serif;
+    color: #131313;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-decoration: none; 
+    text-transform: uppercase;
+}
+
+.header-nav li a:hover {
+    color: #22e0da; 
+}
