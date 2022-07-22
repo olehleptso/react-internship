@@ -3,11 +3,8 @@ import logo from '../../images/triangle.png'
 
 function Header () {
     return (
-        <div className="header">
-            <div className="inner-header">
-                <div className="header-logo">
-                    <img src={logo} alt="Logo"/>
-                </div>
+            <div className="header">
+                <img src={logo} alt="Logo"/>
                 <div className="header-menu">
                     <ul className="header-nav">
                         <li><a href="#">home</a></li>
@@ -20,8 +17,6 @@ function Header () {
                     </ul>
                 </div>
             </div>
-        </div>
-        
     );
 }
 

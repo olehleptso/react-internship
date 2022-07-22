@@ -1,15 +1,11 @@
 .header {
-    background-color: #b3d9e6;
-}
-
-.inner-header {
     display: flex;
     justify-content: space-between;
     width: 1250px;
     margin: auto;
     padding: 20px 0;
 }
-.inner-header img {
+.header img {
     width: 32px;
 }
 
