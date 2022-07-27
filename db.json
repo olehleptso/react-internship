@@ -1,0 +1,32 @@
+{
+  "header-menu": [
+    {
+      "id": 1,
+      "name": "home"
+    },
+    {
+      "id": 2,
+      "name": "about"
+    },
+    {
+      "id": 3,
+      "name": "work"
+    },
+    {
+      "id": 4,
+      "name": "process"
+    },
+    {
+      "id": 5,
+      "name": "services"
+    },
+    {
+      "id": 6,
+      "name": "testimonials"
+    },
+    {
+      "id": 7,
+      "name": "contact"
+    }
+  ]
+}

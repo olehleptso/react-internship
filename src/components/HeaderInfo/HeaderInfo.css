@@ -1,0 +1,18 @@
+.header-info {
+    flex-grow: 1;
+    display: flex; 
+    width: 1250px;
+    margin: auto;
+}
+
+.header-info-wrapper {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 45%;
+    justify-content: center;
+}
+
+.header-info-content {
+    display: flex;
+    justify-content: flex-end;
+}
