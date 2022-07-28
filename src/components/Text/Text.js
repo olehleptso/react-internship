@@ -1,4 +1,5 @@
 import './Text.css';
+import PropTypes from 'prop-types';
 
 function Text ({text, styles}) {
     return (
@@ -9,3 +10,8 @@ function Text ({text, styles}) {
 }
 
 export default Text;
+
+Text.propTypes = {
+    text: PropTypes.string,
+    styles: PropTypes.string
+};
