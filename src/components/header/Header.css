@@ -1,16 +1,16 @@
 .header {
     display: flex;
     justify-content: space-between;
-    width: 1250px;
+    width: 85%;
     margin: auto;
-    padding: 20px 0;
+    padding: 40px 0;
 }
 .header img {
     width: 32px;
 }
 
 .header-menu {
-    flex-basis: 55%;
+    flex-basis: 50%;
 }
 
 .header-nav {
@@ -24,7 +24,7 @@
 .header-nav li a {
     font-family: 'Montserrat', sans-serif;
     color: #131313;
-    font-size: 12px;
+    font-size: 14px;
     font-weight: bold;
     letter-spacing: 2px;
     text-decoration: none; 

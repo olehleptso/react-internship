@@ -1,5 +1,5 @@
 import './Header.css';
-import logo from '../../images/triangle.png';
+import logo from '../../images/logo.png';
 import React, {useEffect, useState} from 'react';
 
 
