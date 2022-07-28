@@ -1,4 +1,5 @@
 import './Button.css';
+import PropTypes from 'prop-types';
 
 function Button ({text, styles}) {
     return (
@@ -9,3 +10,8 @@ function Button ({text, styles}) {
 }
 
 export default Button;
+
+Button.propTypes = {
+    text: PropTypes.string,
+    styles: PropTypes.string
+};
