@@ -33,4 +33,5 @@
 
 .header-nav li a:hover {
     color: #22e0da; 
+    cursor: pointer;
 }
