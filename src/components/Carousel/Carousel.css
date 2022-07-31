@@ -1,8 +1,18 @@
 .carousel {
     margin: 0 auto;
-    overflow: hidden;
 }
 
 .carousel-inner {
+    display: flex;
     white-space: nowrap;
+    overflow: hidden;
+}
+
+.carousel-item-block{
+    display: flex;
+    min-width: 100%;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    transition: 1s cubic-bezier(0.39, 0.575, 0.565, 1);
 }

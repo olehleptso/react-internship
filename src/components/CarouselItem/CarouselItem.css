@@ -1,12 +1,6 @@
 .carousel-item {
-    width: 100%;
     display: flex;
     background-color: rgb(241, 241, 241);
-}
-
-.carousel-item-block{
-    display: inline-block;
-    width: 100%;
 }
 
 .item-info-container {
