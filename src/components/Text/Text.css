@@ -14,3 +14,11 @@
     color: #191919;
     font-family: 'Montserrat', sans-serif;
 }
+
+.bold {
+    line-height: 28px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #191919;
+    font-family: 'Montserrat', sans-serif;
+}
