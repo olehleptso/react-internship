@@ -1,10 +1,10 @@
 .carousel {
     margin: 0 auto;
+    height: 100vh;
 }
 
 .carousel-inner {
     display: flex;
-    white-space: nowrap;
     overflow: hidden;
 }
 

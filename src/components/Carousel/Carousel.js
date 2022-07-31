@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import CarouselControls from '../CarouselControls/CarouselControls';
 import CarouselItem from '../CarouselItem/CarouselItem';
 import './Carousel.css';
 
@@ -7,24 +8,20 @@ function Carousel () {
     let data = ["1","2","3"];
     const [currentSlide, setCurrentSlide] = useState(0);
 
-    const carouselScroll = () => {
-        if (currentSlide === data.length-1) {
-            return setCurrentSlide(0)
-        }
-        return setCurrentSlide(currentSlide + 1)
-    }
+    const prev = () => {
+        const index = currentSlide > 0 ? currentSlide - 1 : data.length - 1;
+        setCurrentSlide(index);
+      }
+      
+    const next = () => {
+        const index = currentSlide < data.length - 1 ? currentSlide + 1 : 0;
+        setCurrentSlide(index);
+      }
 
-    useEffect (() =>{
-        const interval = setInterval(()=> {carouselScroll()}, 2000)
-        return () => clearInterval(interval)
-    })
 
     return (
         <div className='carousel'>
-            <div 
-                className='carousel-inner'
-                
-            >
+            <div className='carousel-inner'>
                 {data.map((item,index) => {
                     return <div 
                                 className='carousel-item-block' key={index}
@@ -32,10 +29,9 @@ function Carousel () {
                             >
                                 <CarouselItem />
                             </div>
-                })
-                }
+                })}
             </div>
-            
+            <CarouselControls prev={prev} next={next}/>
         </div>
     )
 }
