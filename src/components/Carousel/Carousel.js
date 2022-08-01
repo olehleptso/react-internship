@@ -1,12 +1,14 @@
 import { useState, useEffect } from 'react';
 import CarouselControls from '../CarouselControls/CarouselControls';
 import CarouselItem from '../CarouselItem/CarouselItem';
+import ModalSlider from '../ModalSlider/ModalSlider';
 import './Carousel.css';
 
 function Carousel () {
 
     const [currentSlide, setCurrentSlide] = useState(0);
     const [projectData, setProjectData] = useState([]);
+    const [openModal, setOpenModal] = useState(false);
 
     const prev = () => {
         const index = currentSlide > 0 ? currentSlide - 1 : projectData.length - 1;
@@ -19,9 +21,8 @@ function Carousel () {
       }
     
     const more = () => {
-        console.log("show more")
+        setOpenModal(true);
     }
-
     
     useEffect(()=>{
         async function getProjectData() {
@@ -33,18 +34,21 @@ function Carousel () {
     }, []);
     
     return (
-        <div className='carousel'>
-            <div className='carousel-inner'>
-                {projectData.map((data, index) => {
-                    return <div 
-                                className='carousel-item-block' key={index}
-                                style={{ transform: `translate(-${currentSlide * 100}%)`}}
-                            >
-                                <CarouselItem data={data}/>
-                            </div>
-                })}
+        <div>
+            <div className='carousel'>
+                <div className='carousel-inner'>
+                    {projectData.map((data, index) => {
+                        return <div 
+                                    className='carousel-item-block' key={index}
+                                    style={{ transform: `translate(-${currentSlide * 100}%)`}}
+                                >
+                                    <CarouselItem data={data}/>
+                                </div>
+                    })}
+                </div>
+                <CarouselControls prev={prev} next={next} more={more}/>
             </div>
-            <CarouselControls prev={prev} next={next} more={more}/>
+            {openModal && <ModalSlider closeModal={setOpenModal} data={projectData[currentSlide].images} />}
         </div>
     )
 }
