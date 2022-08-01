@@ -5,6 +5,7 @@ import './ModalSlider.css';
 function ModalSlider({closeModal, data}) {
 
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [isSingle, setIsSingle] = useState(false);
   
   
   const prev = () => {
@@ -17,21 +18,32 @@ function ModalSlider({closeModal, data}) {
     setCurrentSlide(index);
   }
 
+  const back = () => {
+    setIsSingle(false)
+  }
+
 
 
   return (
     <div className='modal-background'>
-      <div className='modal-controls'>
-        <div className='modal-btn-container'>
-          <button className="modal-btn" onClick={prev}>{'<'}</button>
-          <button className="modal-btn" onClick={()=>closeModal(false)}>X</button>
-          <button className="modal-btn" onClick={next}>{'>'}</button>
+        {isSingle ? 
+        <div className='modal-controls'>
+          <div className='modal-btn-container'>
+            <button className="modal-btn" onClick={back}>{'<'}</button>
+          </div> 
         </div>
-        <div className='modal-indicator-container'>
+        : 
+        <div className='modal-controls'>
+          <div className='modal-btn-container'>
+            <button className="modal-btn" onClick={prev}>{'<'}</button>
+            <button className="modal-btn" onClick={()=>closeModal(false)}>X</button>
+            <button className="modal-btn" onClick={next}>{'>'}</button>
+          </div>
+          <div className='modal-indicator-container'>
           {data.map((data, index) => {
             return <button 
             style={{
-              backgroundColor: data.id==currentSlide? 'rgba(255, 255, 255, 0.8)' : '',
+              backgroundColor: data.id==currentSlide ? 'rgba(255, 255, 255, 0.8)' : '',
             }}
             className="modal-indicator"
             onClick={()=> {
@@ -39,14 +51,21 @@ function ModalSlider({closeModal, data}) {
             }} 
             key={index}/>
             })}
-        </div>
-      </div>
+          </div>
+          </div>
+        }
       <div className='modal'>
+        {isSingle ? 
+        <div className='modal-single'>
+          <img src={data[currentSlide].url} className='modal-image'/>
+        </div> 
+        : 
         <div className='images-container' style={{ transform: `translate(-${currentSlide * 100}%)`}}>
           {data.map((data, index) => {
-            return <img src={data.url} key={index} className='modal-image'/>
+            return <img src={data.url} key={index} className='modal-image' onClick={() => setIsSingle(true)}/>
           })}
-        </div>
+        </div>}
+        
       </div>
     </div>
       
