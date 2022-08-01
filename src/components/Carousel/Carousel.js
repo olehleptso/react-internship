@@ -17,6 +17,10 @@ function Carousel () {
         const index = currentSlide < projectData.length - 1 ? currentSlide + 1 : 0;
         setCurrentSlide(index);
       }
+    
+    const more = () => {
+        console.log("show more")
+    }
 
     
     useEffect(()=>{
@@ -40,7 +44,7 @@ function Carousel () {
                             </div>
                 })}
             </div>
-            <CarouselControls prev={prev} next={next}/>
+            <CarouselControls prev={prev} next={next} more={more}/>
         </div>
     )
 }

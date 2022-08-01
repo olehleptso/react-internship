@@ -10,6 +10,13 @@
     margin: auto 6%;
 }
 
+.controls-inner img {
+    width: 32px;
+    height: 32px;
+    margin: auto;
+    cursor: pointer;
+}
+
 .btn {
     border: none;
     background-color: #fff;
@@ -20,4 +27,6 @@
     font-family: 'Montserrat', sans-serif;
     text-transform: uppercase;
     letter-spacing: 1px;
+    padding: 0;
+    margin: auto 0;
 }
