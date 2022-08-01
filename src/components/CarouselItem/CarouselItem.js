@@ -27,7 +27,7 @@ function CarouselItem ({data}) {
                     </div>
                 </div>
                 <div className='item-image'>
-                    <img src={breakfast}></img>
+                    <img src={data.main}></img>
                 </div>
             </div>
     )
