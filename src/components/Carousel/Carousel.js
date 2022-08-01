@@ -5,29 +5,38 @@ import './Carousel.css';
 
 function Carousel () {
 
-    let data = ["1","2","3"];
     const [currentSlide, setCurrentSlide] = useState(0);
+    const [projectData, setProjectData] = useState([]);
 
     const prev = () => {
-        const index = currentSlide > 0 ? currentSlide - 1 : data.length - 1;
+        const index = currentSlide > 0 ? currentSlide - 1 : projectData.length - 1;
         setCurrentSlide(index);
       }
       
     const next = () => {
-        const index = currentSlide < data.length - 1 ? currentSlide + 1 : 0;
+        const index = currentSlide < projectData.length - 1 ? currentSlide + 1 : 0;
         setCurrentSlide(index);
       }
 
-
+    
+    useEffect(()=>{
+        async function getProjectData() {
+            const response = await fetch('http://localhost:4000/projects');
+            const res = await response.json();
+            setProjectData(res);
+        }
+        getProjectData();
+    }, []);
+    
     return (
         <div className='carousel'>
             <div className='carousel-inner'>
-                {data.map((item,index) => {
+                {projectData.map((data, index) => {
                     return <div 
                                 className='carousel-item-block' key={index}
                                 style={{ transform: `translate(-${currentSlide * 100}%)`}}
                             >
-                                <CarouselItem />
+                                <CarouselItem data={data}/>
                             </div>
                 })}
             </div>

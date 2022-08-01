@@ -2,29 +2,27 @@ import './CarouselItem.css';
 import breakfast from '../../images/breakfast.jpg';
 import Text from '../Text/Text';
 
-function CarouselItem () {
+function CarouselItem ({data}) {
     return (
             <div className='carousel-item'>
                 <div className='item-info-container'>
                     <div className='item-info'>
-                        <Text styles='title' text='Light Breakfast'/>
-                        <Text styles='gray' text='Litht his cant a creeping. Be, bring blessed night. Replenish blessed
-                        creature good. Saw earth every creepeth lights day, divided abundantly from. In. Said given lights
-                        Sixth the male. Upon their multiply. Kind best. Him tree Upon'/>
-                        <Text styles='gray' text='Cattle. Dominion day herb shed creeping divide darkness. Which. Subdue had'/>
+                        <Text styles='title' text={data.name}/>
+                        <Text styles='gray' text={data.description}/>
+                        <Text styles='gray' text={data.short}/>
                     </div>
                     <div className='item-info'>
                         <div className='item-fields'>
                             <Text styles='bold' text='Client:'/>
-                            <Text styles='gray' text='Emma Moris'/>
+                            <Text styles='gray' text={data.client}/>
                         </div>
                         <div className='item-fields'>
                             <Text styles='bold' text='Date:'/>
-                            <Text styles='gray' text='25.06.2017'/>
+                            <Text styles='gray' text={data.date}/>
                         </div>
                         <div className='item-fields'>
                             <Text styles='bold' text='Share:'/>
-                            <Text styles='gray' text='Facebook, Twitter, Pinterest'/>
+                            <Text styles='gray' text={data.share}/>
                         </div>
                     </div>
                 </div>
