@@ -1,0 +1,8 @@
+.modal {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.75);
+    display: grid;
+    place-items: center;
+    transition: opacity 250ms ease-in-out;
+}
