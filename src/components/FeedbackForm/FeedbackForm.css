@@ -1,6 +1,6 @@
 .form { 
     width: 30vw;
-    height: 70vh;
+    height: 80vh;
     background-color: rgb(240, 240, 240);
 }
 
@@ -25,6 +25,7 @@
     width: 100%;
     margin: auto;
     display: flex;
+    align-items: center;
 }
 
 .input-container input {
@@ -60,4 +61,27 @@
 
 .check:checked {
         background-color: green;
+}
+
+.star-rating {
+    margin: auto;
+}
+
+.star-rating button {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  
+}
+
+.star {
+    font-size: 32px;
+}
+
+.on {
+  color: rgb(255, 165, 46);
+}
+.off {
+  color: #ccc;
 }

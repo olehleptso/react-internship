@@ -12,8 +12,12 @@ import './FeedbackForm.css'
         mail: '',
         department: '',
         feedbackText: '',
-        rating: 5
+        rating: 0,
+        agreement: false
     })
+    const [hover, setHover] = useState(0);
+
+
 
     return (
         <Modal>
@@ -84,7 +88,31 @@ import './FeedbackForm.css'
                         />
                     </div>
                     <div className='input-container'>
-                        <input className="check"type="checkbox" />
+                        <div className="star-rating">
+                            {[...Array(5)].map((star, index) => {
+                                index += 1;
+                                return (
+                                <button   
+                                    type="button"
+                                    key={index}
+                                    className={index <= (hover || feedback.rating) ? "on" : "off"}
+                                    onClick={() => setFeedback({...feedback, rating:index})}
+                                    onMouseEnter={() => setHover(index)}
+                                    onMouseLeave={() => setHover(feedback.rating)}
+                                >
+                                    <span className="star">&#9733;</span>
+                                </button>
+                                );
+                            })}
+                        </div>
+                    </div>
+                    <div className='input-container'>
+                        <input 
+                            className="check" 
+                            type="checkbox" 
+                            value={feedback.agreement}
+                            onChange={(event) => setFeedback({...feedback, agreement:event.target.checked})}
+                        />
                         I agree to the processing of personal data
                     </div>
                     <div className='controls'>
