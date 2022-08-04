@@ -1,7 +1,7 @@
 .form { 
     width: 30vw;
     height: 70vh;
-    background-color: rgb(245, 245, 245);
+    background-color: rgb(240, 240, 240);
 }
 
 .form-inner {
@@ -12,9 +12,52 @@
     margin: auto;
 }
 
-input {
+.input {
+    font-size: 16px;
     border: none;
     border-radius: 0;
-    height: 2rem;
-    padding: 0 2rem;
+    width: 100%;
+    font-family: 'Montserrat', sans-serif;
+    padding-left: 1rem;
+}
+
+.input-container {
+    width: 100%;
+    margin: auto;
+    display: flex;
+}
+
+.input-container input {
+    height: 3rem;
+}
+
+.input-container select {
+    height: 3rem;
+}
+
+.input-container textarea {
+    padding: 1rem;
+    height: 5rem;
+    resize: none;
+}
+
+.name-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.name-container input {
+    width: 45%;
+}
+
+.controls {
+    display: flex;
+    margin: auto;
+    width: 100%;
+    justify-content: space-around;
+}
+
+.check:checked {
+        background-color: green;
 }
