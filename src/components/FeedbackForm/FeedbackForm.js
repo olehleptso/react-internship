@@ -17,7 +17,12 @@ import './FeedbackForm.css'
     })
     const [hover, setHover] = useState(0);
 
+    const handleChange = (e) => {
+        const {name, value} = e.target;
+        setFeedback({...feedback,[name]:value})
+    }
 
+    const send = () => console.log(feedback)
 
     return (
         <Modal>
@@ -26,50 +31,40 @@ import './FeedbackForm.css'
                     <div className='input-container'>
                         <div className='name-container'>
                             <input 
+                                name="firstname"
                                 className='input'
                                 placeholder='First Name' 
-                                onChange={(event) => {
-                                    setFeedback({...feedback, firstname:event.target.value})
-                                    console.log(feedback)
-                                }}
+                                onChange={handleChange}
                             />
                             <input 
+                                name="lastname"
                                 className='input'
                                 placeholder='Last Name' 
-                                onChange={(event) => {
-                                    setFeedback({...feedback, lastname:event.target.value})
-                                    console.log(feedback)
-                                }}
+                                onChange={handleChange}
                             />
                         </div>
                     </div>
                     <div className='input-container'>
                         <input 
+                            name="phone"
                             className='input'
                             placeholder='Phone' 
-                            onChange={(event) => {
-                                setFeedback({...feedback, phone:event.target.value})
-                                console.log(feedback)
-                            }}
+                            onChange={handleChange}
                         />
                     </div>
                     <div className='input-container'>
                         <input 
+                            name="mail"
                             className='input'
                             placeholder='Mail' 
-                            onChange={(event) => {
-                                setFeedback({...feedback, mail:event.target.value})
-                                console.log(feedback)
-                            }}
+                            onChange={handleChange}
                         />
                     </div>
                     <div className='input-container'>
                         <select 
+                            name="department"
                             className='input'
-                            onChange={(event) => {
-                                setFeedback({...feedback, department:event.target.value})
-                                console.log(feedback)
-                            }}
+                            onChange={handleChange}
                         >
                             <option value='' disabled>Select Department</option>
                             <option value='Development' >Development</option>
@@ -79,12 +74,10 @@ import './FeedbackForm.css'
                     </div>
                     <div className='input-container'>
                         <textarea 
+                            name="feedbackText"
                             className='input'
                             placeholder='Enter feedback'
-                            onChange={(event) => {
-                                setFeedback({...feedback, feedbackText:event.target.value})
-                                console.log(feedback)
-                            }}
+                            onChange={handleChange}
                         />
                     </div>
                     <div className='input-container'>
@@ -108,6 +101,7 @@ import './FeedbackForm.css'
                     </div>
                     <div className='input-container'>
                         <input 
+                            name="agreement"
                             className="check" 
                             type="checkbox" 
                             value={feedback.agreement}
@@ -116,7 +110,7 @@ import './FeedbackForm.css'
                         I agree to the processing of personal data
                     </div>
                     <div className='controls'>
-                        <Button styles='primary' text='submit'/>
+                        <Button styles='primary' text='submit' onclick={send}/>
                         <Button styles='primary' text='cancel' onclick={()=> closeModal(false)}/>
                     </div>
                 </div>
