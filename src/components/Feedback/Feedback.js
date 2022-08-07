@@ -3,6 +3,7 @@ import Text from '../Text/Text'
 import Button from '../Button/Button'
 import './Feedback.css'
 import FeedbackForm from '../FeedbackForm/FeedbackForm';
+import Modal from '../Modal/Modal';
 
 function Feedback() {
     const [givingFeedback, setGivingFeedback] = useState(false);
@@ -15,8 +16,17 @@ function Feedback() {
                     <Text styles='gray' text='Let us know what you think about our projects'/>
                     <Button styles='primary' text='give feedback' onclick={()=> setGivingFeedback(true)}/>
                 </div>
+                {givingFeedback ? 
+            <div>
+                <Modal close={()=>setGivingFeedback(false)}/>
+                <FeedbackForm closeModal={setGivingFeedback}/>
             </div>
-            {givingFeedback ? <FeedbackForm closeModal={setGivingFeedback}/> : ''}
+                
+                : 
+                ''
+            }
+            </div>
+            
         </div>
         
     )

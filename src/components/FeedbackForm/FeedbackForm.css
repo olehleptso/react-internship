@@ -2,6 +2,9 @@
     width: 30vw;
     height: 80vh;
     background-color: rgb(240, 240, 240);
+    position: fixed;
+    top:10%;
+    left: 35%;
 }
 
 .form-inner {
@@ -26,6 +29,7 @@
     margin: auto;
     display: flex;
     align-items: center;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .input-container input {
@@ -34,6 +38,7 @@
 
 .input-container select {
     height: 3rem;
+
 }
 
 .input-container textarea {
@@ -84,4 +89,11 @@
 }
 .off {
   color: #ccc;
+}
+
+
+p { 
+    display: block;
+    color: red;
+    font-family: 'Montserrat', sans-serif;
 }
