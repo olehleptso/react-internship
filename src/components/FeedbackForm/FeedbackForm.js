@@ -1,7 +1,10 @@
+import { eventWrapper } from '@testing-library/user-event/dist/utils'
 import React, { useState } from 'react'
 import Button from '../Button/Button'
 import Modal from '../Modal/Modal'
 import './FeedbackForm.css'
+
+
 
  function FeedbackForm({closeModal}) {
     const initialValues = {
@@ -14,128 +17,283 @@ import './FeedbackForm.css'
         rating: 0, 
         agreement: false
     }
+    
+    const initialErrors = {
+        firstname: { error:'', valid: true },
+        lastname: { error:'', valid: true },
+        mail: { error:'', valid: true },
+        department: { error:'', valid: true },
+        feedbackText: { error:'', valid: true },
+        rating: { error:'', valid: true },
+        agreement: { error:'', valid: true }
+    };
+
     const [feedback, setFeedback] = useState(initialValues)
-    const [formErrors, setFormErrors] = useState({});
+    const [formErrors, setFormErrors] = useState(initialErrors);
     const [hover, setHover] = useState(0);
-    const [isSubmit, setIsSubmit] = useState(false);
 
     const handleChange = (e) => {
         const {name, value} = e.target;
         setFeedback({...feedback,[name]:value})
     }
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        setFormErrors(validate(feedback));
-        setIsSubmit(true);
-        console.log(feedback)
-    };
-    
-    const validate = (values) => {
-        const errors = {};
-        const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
-        if (!values.firstname) {
-          errors.firstname = "First name is required!";
-        } else if(values.firstname.length < 3) {
-            errors.firstname = "First name must be longer that 2 symbols"
-        }
-        if (!values.lastname) {
-            errors.lastname = "Last name is required!";
-        } else if(values.lastname.length < 3) {
-            errors.lastname = "Last name must be longer that 2 symbols"
-        }
-        if (!values.mail) {
-          errors.mail = "Email is required!";
-        } else if (!regex.test(values.mail)) {
-          errors.mail = "This is not a valid email format!";
-        }
-        if (!values.department) {
-          errors.department = "Choose a department";
-        }
-        if (!values.feedbackText) {
-            errors.feedbackText = "Enter a feedback text";
-        } else if(values.feedbackText.length <100) {
-            errors.feedbackText = "Feedback must be longer that 100 symbols"
-        }
-        else if(values.feedbackText.length >150) {
-            errors.feedbackText = "Feedback must be shorter that 150 symbols"
-        }
-        if (!values.rating) {
-            errors.rating = "Choose rating";
-        }
-        if (!values.agreement) {
-            errors.agreement = "Agreement required";
-        }
-        
 
-        return errors;
+    const validate = (name, value) => {
+        
+        switch(name){
+            case 'firstname':
+                if (!value) {
+                    setFormErrors({...formErrors, [name]: {error:"First name is required!", valid: false}}) 
+                } else if(value.length < 3) {
+                    setFormErrors({...formErrors, [name]: {error:"First name must be longer that 2 symbols", valid: false}}) 
+                } else {
+                    setFormErrors({
+                      ...formErrors,
+                      [name]: { valid: true, error: '' }
+                    });
+                }
+                break;
+            case 'lastname':
+                if (!value) {
+                    setFormErrors({...formErrors, [name]: {error:"Last name is required!", valid: false}}) 
+                } else if(value.length < 3) {
+                    setFormErrors({...formErrors, [name]: {error:"Last name must be longer that 2 symbols", valid: false}}) 
+                } else {
+                    setFormErrors({
+                      ...formErrors,
+                      [name]: { valid: true, error: '' }
+                    });
+                }
+                break;
+            case 'mail':
+                if (!value) {
+                    setFormErrors({...formErrors, [name]: {error:"Email is required!", valid: false}}) 
+                } else if (!value.match(/@/)) {
+                    setFormErrors({...formErrors, [name]: {error:"This is not a valid email format!", valid: false}}) 
+                } else {
+                    setFormErrors({
+                      ...formErrors,
+                      [name]: { valid: true, error: '' }
+                    });
+                }
+                break;
+            case 'department':
+                if (!value) {
+                    setFormErrors({...formErrors, [name]: {error:"Choose a department", valid: false}})
+                } else {
+                    setFormErrors({
+                      ...formErrors,
+                      [name]: { valid: true, error: '' }
+                    });
+                }
+                break;
+            case 'feedbackText':
+                if (!value) {
+                    setFormErrors({...formErrors, [name]: {error:"Enter a feedback text", valid: false}})
+                } else if(value.length <100) {
+                    setFormErrors({...formErrors, [name]: {error:"Feedback must be longer that 100 symbols", valid: false}})
+                } else if(value.length >150) {
+                    setFormErrors({...formErrors, [name]: {error:"Feedback must be shorter that 150 symbols", valid: false}})
+                } else {
+                    setFormErrors({
+                      ...formErrors,
+                      [name]: { valid: true, error: '' }
+                    });
+                }
+                break;
+            case 'rating':
+                if (!value) {
+                    setFormErrors({...formErrors, [name]: {error:"Choose rating", valid: false}})
+                }
+                break;
+            case 'agreement':
+                if (!value) {
+                    setFormErrors({...formErrors, [name]: {error:"Agreement required", valid: false}})
+                } else {
+                    setFormErrors({
+                      ...formErrors,
+                      [name]: { valid: true, error: '' }
+                    });
+                }
+                break;
+            default: 
+                break;
+        }
       };
 
-    return (
+      const validationHandler = (event) => {
+        validate(event.target.name, event.target.value)
+      }
 
+      const handleSubmit = (e) => {
+        e.preventDefault();
+        setFormErrors(validateAll(feedback));
+        console.log(formErrors)
+    };
+    
+    const validateAll = (values) => {
+        const errors = {
+            firstname: { error:'', valid: true },
+            lastname: { error:'', valid: true },
+            mail: { error:'', valid: true },
+            department: { error:'', valid: true },
+            feedbackText: { error:'', valid: true },
+            rating: { error:'', valid: true },
+            agreement: { error:'', valid: true }
+        };
+        
+        if (!values.firstname) {
+            errors.firstname.error = "First name is required!";
+            errors.firstname.valid = false
+          } else if(values.firstname.length < 3) {
+              errors.firstname.error = "First name must be longer that 2 symbols"
+              errors.firstname.valid = false
+          }
+          if (!values.lastname) {
+              errors.lastname.error = "Last name is required!";
+              errors.lastname.valid = false
+              
+          } else if(values.lastname.length < 3) {
+              errors.lastname.error = "Last name must be longer that 2 symbols"
+              errors.lastname.valid = false
+          }
+          if (!values.mail) {
+            errors.mail.error = "Email is required!";
+            errors.mail.valid = false
+          } else if (!values.mail.match(/@/)) {
+            errors.mail.error = "This is not a valid email format!";
+            errors.mail.valid = false
+          }
+          if (!values.department) {
+            errors.department.error = "Choose a department";
+            errors.department.valid = false
+          }
+          if (!values.feedbackText) {
+              errors.feedbackText.error = "Enter a feedback text";
+              errors.feedbackText.valid = false
+          } else if(values.feedbackText.length <100) {
+              errors.feedbackText.error = "Feedback must be longer that 100 symbols"
+              errors.feedbackText.valid = false
+          }
+          else if(values.feedbackText.length >150) {
+              errors.feedbackText.error = "Feedback must be shorter that 150 symbols"
+              errors.feedbackText.valid = false
+          }
+          if (!values.rating) {
+              errors.rating.error = "Choose rating";
+              errors.rating.valid = false
+          }
+          if (!values.agreement) {
+              errors.agreement.error = "Agreement required";
+              errors.agreement.valid = false
+          }
+          return errors;
+        // if (!values.firstname) {
+        //     setFormErrors({...formErrors, firstname: {error:"First name is required!", valid: false}})
+        // } else if(values.firstname.length < 3) {
+        //     setFormErrors({...formErrors, firstname: {error:"First name must be longer that 2 symbols", valid: false}})
+        // }
+        // if (!values.lastname) {
+        //     setFormErrors({...formErrors, lastname: {error:"Last name is required!", valid: false}})
+        // } else if(values.lastname.length < 3) {
+        //     setFormErrors({...formErrors, lastname: {error:"Last name must be longer that 2 symbols", valid: false}})
+        // }
+        // if (!values.mail) {
+        //     setFormErrors({...formErrors, mail: {error:"Email is required!", valid: false}})
+        // } else if (!values.mail.match(/@/)) {
+        //     setFormErrors({...formErrors, mail: {error:"This is not a valid email format!", valid: false}})
+        // }
+        // if (!values.department) {
+        //     setFormErrors({...formErrors, department: {error:"Choose a department", valid: false}})
+        // }
+        // if (!values.feedbackText) {
+        //     setFormErrors({...formErrors, feedbackText: {error:"Enter a feedback text", valid: false}})
+        // } else if(values.feedbackText.length <100) {
+        //     setFormErrors({...formErrors, feedbackText: {error:"Feedback must be longer that 100 symbols", valid: false}})
+        // } else if(values.feedbackText.length >150) {
+        //     setFormErrors({...formErrors, feedbackText: {error:"Feedback must be shorter that 150 symbols", valid: false}})
+        // }
+        // if (!values.rating) {
+        //     setFormErrors({...formErrors, rating: {error:"Choose rating", valid: false}})
+        // }
+        // if (!values.agreement) {
+        //     setFormErrors({...formErrors, agreement: {error:"Agreement required", valid: false}})
+        // }
+    }
+
+
+    return (
             <div className='form'>
-                <div className='form-inner'>
-                    <div className='input-container'>
-                        <div className='name-container'>
-                            <input 
-                                name="firstname"
-                                className='input'
-                                placeholder='First Name' 
-                                onChange={handleChange}
-                            />
-                            <p>{formErrors.firstname}</p>
-                            <input 
+                <form className='form-inner' onSubmit={handleSubmit}>
+                    <label>
+                        <input 
+                            name="firstname"
+                            value={feedback.firstname}
+                            className='input'
+                            placeholder='First Name' 
+                            onChange={handleChange}
+                            onBlur={validationHandler}
+                        />
+                        {!formErrors.firstname.valid ? <span className='error'>{formErrors.firstname.error}</span>:''}
+                        </label>
+                    <label>
+                    <input 
                                 name="lastname"
+                                value={feedback.lastname}
                                 className='input'
                                 placeholder='Last Name' 
                                 onChange={handleChange}
+                                onBlur={validationHandler}
                             />
-                            <p>{formErrors.lastname}</p>
-                        </div>
-                    </div>
-                    <div className='input-container'>
+                            {!formErrors.lastname.valid ? <span className='error'>{formErrors.lastname.error}</span>:''}
+                    </label>
+                    <label>
                         <input 
                             name="phone"
+                            value={feedback.phone}
                             className='input'
                             placeholder='Phone' 
                             onChange={handleChange}
+                            onBlur={validationHandler}
                         />
-                    </div>
-                    <div className='input-container'>
+                    </label> 
+                    <label>
                         <input 
-                            name="mail"
-                            className='input'
-                            placeholder='Mail' 
-                            onChange={handleChange}
+                                name="mail"
+                                value={feedback.mail}
+                                className='input'
+                                placeholder='Mail' 
+                                onChange={handleChange}
+                                onBlur={validationHandler}
                         />
-                        <div className='error'>
-                            <p>{formErrors.mail}</p>
-                        </div>
-
-                    </div>
-                    <div className='input-container'>
+                        {!formErrors.mail.valid ? <span className='error'>{formErrors.mail.error}</span>:''}
+                    </label>      
+                    <label>
                         <select 
                             name="department"
+                            value={feedback.department}
                             className='input'
                             onChange={handleChange}
                         >
-                            <option value='' disabled selected>Select Department</option>
+                            <option value='' disabled>Select Department</option>
                             <option value='Development' >Development</option>
                             <option value='Testing' >Testing</option>
                             <option value='Marketing' >Marketing</option>
                         </select>
-                        <p>{formErrors.department}</p>
-                    </div>
-                    <div className='input-container'>
+                        {!formErrors.department.valid ? <span className='error'>{formErrors.department.error}</span>:''}
+                    </label>
+                    <label>
                         <textarea 
                             name="feedbackText"
+                            value={feedback.feedbackText}
                             className='input'
                             placeholder='Enter feedback'
                             onChange={handleChange}
+                            onBlur={validationHandler}
                         />
-                        <p>{formErrors.feedbackText}</p>
-                    </div>
-                    <div className='input-container'>
+                        {!formErrors.feedbackText.valid ? <span className='error'>{formErrors.feedbackText.error}</span>:''}
+                    </label>
+                    <label>
                         <div className="star-rating">
                             {[...Array(5)].map((star, index) => {
                                 index += 1;
@@ -153,9 +311,9 @@ import './FeedbackForm.css'
                                 );
                             })}
                         </div>
-                        <p>{formErrors.rating}</p>
-                    </div>
-                    <div className='input-container'>
+                        {!formErrors.rating.valid ? <span className='error'>{formErrors.rating.error}</span>:''}
+                    </label>
+                    <label>
                         <input 
                             name="agreement"
                             className="check" 
@@ -164,15 +322,15 @@ import './FeedbackForm.css'
                             onChange={(event) => setFeedback({...feedback, agreement:event.target.checked})}
                         />
                         I agree to the processing of personal data
-                        <p>{formErrors.agreement}</p>
-                    </div>
+                        {!formErrors.agreement.valid ? <span className='error'>{formErrors.agreement.error}</span>:''}
+                    </label>    
                     <div className='controls'>
-                        <Button styles='primary' text='submit' onclick={handleSubmit}/>
+                        <Button styles='primary' text='submit' type='submit'/>
                         <Button styles='primary' text='cancel' onclick={()=> closeModal(false)}/>
                     </div>
-                </div>
+                </form>
             </div>
     )
 }
 
-export default FeedbackForm
+export default FeedbackForm;
