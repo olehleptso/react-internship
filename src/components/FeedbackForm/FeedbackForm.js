@@ -141,7 +141,7 @@ import './FeedbackForm.css'
             rating: { error:'', valid: true },
             agreement: { error:'', valid: true }
         };
-        
+
         if (!values.firstname) {
             errors.firstname.error = "First name is required!";
             errors.firstname.valid = false
@@ -188,37 +188,6 @@ import './FeedbackForm.css'
               errors.agreement.valid = false
           }
           return errors;
-        // if (!values.firstname) {
-        //     setFormErrors({...formErrors, firstname: {error:"First name is required!", valid: false}})
-        // } else if(values.firstname.length < 3) {
-        //     setFormErrors({...formErrors, firstname: {error:"First name must be longer that 2 symbols", valid: false}})
-        // }
-        // if (!values.lastname) {
-        //     setFormErrors({...formErrors, lastname: {error:"Last name is required!", valid: false}})
-        // } else if(values.lastname.length < 3) {
-        //     setFormErrors({...formErrors, lastname: {error:"Last name must be longer that 2 symbols", valid: false}})
-        // }
-        // if (!values.mail) {
-        //     setFormErrors({...formErrors, mail: {error:"Email is required!", valid: false}})
-        // } else if (!values.mail.match(/@/)) {
-        //     setFormErrors({...formErrors, mail: {error:"This is not a valid email format!", valid: false}})
-        // }
-        // if (!values.department) {
-        //     setFormErrors({...formErrors, department: {error:"Choose a department", valid: false}})
-        // }
-        // if (!values.feedbackText) {
-        //     setFormErrors({...formErrors, feedbackText: {error:"Enter a feedback text", valid: false}})
-        // } else if(values.feedbackText.length <100) {
-        //     setFormErrors({...formErrors, feedbackText: {error:"Feedback must be longer that 100 symbols", valid: false}})
-        // } else if(values.feedbackText.length >150) {
-        //     setFormErrors({...formErrors, feedbackText: {error:"Feedback must be shorter that 150 symbols", valid: false}})
-        // }
-        // if (!values.rating) {
-        //     setFormErrors({...formErrors, rating: {error:"Choose rating", valid: false}})
-        // }
-        // if (!values.agreement) {
-        //     setFormErrors({...formErrors, agreement: {error:"Agreement required", valid: false}})
-        // }
     }
 
 
