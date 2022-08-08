@@ -4,12 +4,14 @@ import Button from '../Button/Button'
 import './Feedback.css'
 import FeedbackForm from '../FeedbackForm/FeedbackForm';
 import Modal from '../Modal/Modal';
+import Feedbacks from '../Feedbacks/Feedbacks';
 
 function Feedback() {
     const [givingFeedback, setGivingFeedback] = useState(false);
 
     return (
         <div>
+            <Feedbacks/>
             <div className='feedback-container'>
                 <div className='feedback-inner'>
                     <Text styles='title' text='Give us a feedback'/>
