@@ -4,6 +4,11 @@ import './Feedbacks.css'
 
 export default function Feedbacks() {
     const [feedbacks, setFeedbacks] = useState([])
+    const [toShow, setToShow] = useState([])
+
+    
+
+    const filter = () => feedbacks ? feedbacks.filter((item) => item.rating >= 3.5).slice(-3).reverse()  : null;
 
     useEffect(()=>{
         async function getFeedbacks() {
@@ -12,13 +17,12 @@ export default function Feedbacks() {
             setFeedbacks(res);
         }
         getFeedbacks();
+        setToShow(filter)
     }, []);
-
-
 
     return (
         <div className='feedbacks'>
-            {feedbacks.map((data, index) => (
+            {toShow.map((data, index) => (
                 <FeedbackItem data={data} key={index}/>
             ))}
         </div>
