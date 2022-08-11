@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import React from 'react'
 import './ModalSlider.css';
+import Modal from '../Modal/Modal';
 
 function ModalSlider({closeModal, data}) {
 
@@ -25,7 +26,7 @@ function ModalSlider({closeModal, data}) {
 
 
   return (
-    <div className='modal-background'>
+    <Modal>
         {isSingle ? 
         <div className='modal-controls'>
           <div className='modal-btn-container'>
@@ -54,7 +55,7 @@ function ModalSlider({closeModal, data}) {
           </div>
           </div>
         }
-      <div className='modal'>
+      <div className='modal-slider'>
         {isSingle ? 
         <div className='modal-single'>
           <img src={data[currentSlide].url} className='modal-image'/>
@@ -65,9 +66,8 @@ function ModalSlider({closeModal, data}) {
             return <img src={data.url} key={index} className='modal-image' onClick={() => setIsSingle(true)}/>
           })}
         </div>}
-        
       </div>
-    </div>
+    </Modal>
       
   )
 }
