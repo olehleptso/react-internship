@@ -28,8 +28,6 @@ function Services() {
                     return <ServicesItem data={data} key={index}></ServicesItem>
                 })}
             </div>
-
-            <button onClick={show}></button>
         </div>
     )
 }

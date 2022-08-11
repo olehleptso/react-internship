@@ -10,18 +10,16 @@ export default function Feedbacks() {
             const response = await fetch('http://localhost:4000/feedbacks');
             const res = await response.json();
             setFeedbacks(res);
-            console.log(feedbacks)
         }
         getFeedbacks();
-        console.log(feedbacks)
     }, []);
 
 
 
     return (
         <div className='feedbacks'>
-            {feedbacks.map((data) => (
-                <FeedbackItem  key={data.id} data={data}/>
+            {feedbacks.map((data, index) => (
+                <FeedbackItem data={data} key={index}/>
             ))}
         </div>
     )
