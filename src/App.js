@@ -5,6 +5,7 @@ import Carousel from './components/Carousel/Carousel';
 import Feedback from './components/Feedback/Feedback';
 import Process from './components/Process/Process';
 import Services from './components/Services/Services';
+import Footer from './components/Footer/Footer';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <Process/>
       <Services/>
       <Feedback/>
+      <Footer/>
     </div>
   );
 }

@@ -17,7 +17,7 @@ function Header () {
     }, []);
 
     return (
-            <div className="header">
+            <div className="header"  id="home">
                 <img src={logo} alt="Logo"/>
                 <div className="header-menu">
                     <ul className="header-nav">
