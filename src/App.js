@@ -4,6 +4,7 @@ import HeaderContainer from './components/HeaderContainer/HeaderContainer';
 import Carousel from './components/Carousel/Carousel';
 import Feedback from './components/Feedback/Feedback';
 import Process from './components/Process/Process';
+import Services from './components/Services/Services';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <About/>
       <Carousel/>
       <Process/>
+      <Services/>
       <Feedback/>
     </div>
   );
