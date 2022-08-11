@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import Button from '../Button/Button'
 import Modal from '../Modal/Modal'
 import './FeedbackForm.css'
+import axios from 'axios'
 
 
 
@@ -37,9 +38,7 @@ import './FeedbackForm.css'
         setFeedback({...feedback,[name]:value})
     }
 
-
     const validate = (name, value) => {
-        
         switch(name){
             case 'firstname':
                 if (!value) {
@@ -121,14 +120,24 @@ import './FeedbackForm.css'
         }
       };
 
-      const validationHandler = (event) => {
+    const validationHandler = (event) => {
         validate(event.target.name, event.target.value)
-      }
+    }
 
-      const handleSubmit = (e) => {
+    async function sendData () {
+        console.log(feedback)
+        feedback.created_at = Date.now();
+        await axios({ 
+            method:'post',
+            url:'http://localhost:4000/feedbacks',
+            data: {...feedback}
+        })}
+
+
+    const handleSubmit = (e) => {
         e.preventDefault();
         setFormErrors(validateAll(feedback));
-        console.log(formErrors)
+        sendData(feedback);
     };
     
     const validateAll = (values) => {
@@ -294,7 +303,7 @@ import './FeedbackForm.css'
                         {!formErrors.agreement.valid ? <span className='error'>{formErrors.agreement.error}</span>:''}
                     </label>    
                     <div className='controls'>
-                        <Button styles='primary' text='submit' type='submit'/>
+                        <Button styles='primary' text='submit' type='submit' />
                         <Button styles='primary' text='cancel' onclick={()=> closeModal(false)}/>
                     </div>
                 </form>
