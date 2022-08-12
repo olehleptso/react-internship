@@ -4,7 +4,7 @@ import Text from '../Text/Text';
 
 function Process() {
   return (
-    <div className='process'>
+    <div className='process' id="process">
         <div className='process-inner'>
             <Text styles="title" text="Our Work Process"/>
             <Text styles="gray" 

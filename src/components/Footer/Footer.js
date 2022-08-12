@@ -21,14 +21,14 @@ function Footer() {
             <div className='inc'>
                     <ul>
                         <li><a href="#home" className='footer-text'>Home</a></li>
-                        <li><a href="#" className='footer-text'>About</a></li>
-                        <li><a href="#" className='footer-text'>Services</a></li>
+                        <li><a href="#about" className='footer-text'>About</a></li>
+                        <li><a href="#services" className='footer-text'>Services</a></li>
                         <li><a href="#" className='footer-text'>Clients</a></li>
                     </ul>
                     <ul>
-                        <li><a href="#" className='footer-text'>Projects</a></li>
+                        <li><a href="#projects" className='footer-text'>Projects</a></li>
                         <li><a href="#" className='footer-text'>Numbers</a></li>
-                        <li><a href="#" className='footer-text'>Contact</a></li>
+                        <li><a href="#feedbacks" className='footer-text'>Contact</a></li>
                         <li><a href="#" className='footer-text'>Legals</a></li>
                     </ul>
             </div>

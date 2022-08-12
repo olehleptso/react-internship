@@ -5,7 +5,7 @@ import sign from '../../images/sign.png';
 
 function About () {
     return (
-    <div className="about-outer">
+    <div className="about-outer" id="about">
         <div className="about-inner">
             <Text styles='title' text='About Us'/>
             <Text styles="gray" text="Divide have don't man wherein air fourth. Own itself make have night won't make.

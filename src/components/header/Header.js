@@ -23,7 +23,7 @@ function Header () {
                     <ul className="header-nav">
                         {menuItems.map((data) => (
                             <li key={data.id}>
-                                <a>{data.name}</a>
+                                <a href={data.to}>{data.name}</a>
                             </li>
                         ))}
                     </ul>

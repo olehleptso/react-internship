@@ -10,7 +10,7 @@ function Feedback() {
     const [givingFeedback, setGivingFeedback] = useState(false);
 
     return (
-        <div>
+        <div id="feedbacks">
             <Feedbacks/>
             <div className='feedback-container'>
                 <div className='feedback-inner'>

@@ -35,7 +35,7 @@ function Carousel () {
     
     return (
         <div>
-            <div className='carousel'>
+            <div className='carousel' id="projects">
                 <div className='carousel-inner'>
                     {projectData.map((data, index) => {
                         return <div 
