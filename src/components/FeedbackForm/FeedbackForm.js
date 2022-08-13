@@ -7,7 +7,7 @@ import axios from 'axios'
 
 
 
- function FeedbackForm({closeModal}) {
+ function FeedbackForm({closeModal, onSubmit}) {
     const initialValues = {
         firstname: '',
         lastname: '',
@@ -124,20 +124,20 @@ import axios from 'axios'
         validate(event.target.name, event.target.value)
     }
 
-    async function sendData () {
-        console.log(feedback)
-        feedback.created_at = Date.now();
-        await axios({ 
-            method:'post',
-            url:'http://localhost:4000/feedbacks',
-            data: {...feedback}
-        })}
+    // async function sendData () {
+    //     console.log(feedback)
+    //     feedback.created_at = Date.now();
+    //     await axios({ 
+    //         method:'post',
+    //         url:'http://localhost:4000/feedbacks',
+    //         data: {...feedback}
+    //     })}
 
 
     const handleSubmit = (e) => {
         e.preventDefault();
         setFormErrors(validateAll(feedback));
-        sendData(feedback);
+        onSubmit(feedback);
     };
     
     const validateAll = (values) => {

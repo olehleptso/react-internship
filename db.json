@@ -3,34 +3,33 @@
     {
       "id": 1,
       "name": "home",
-      "to":"#home"
+      "to": "#home"
     },
     {
       "id": 2,
       "name": "about",
-      "to":"#about"
+      "to": "#about"
     },
     {
       "id": 3,
       "name": "projects",
-      "to":"#projects"
+      "to": "#projects"
     },
     {
       "id": 4,
       "name": "process",
-      "to":"#process"
+      "to": "#process"
     },
     {
       "id": 5,
       "name": "services",
-      "to":"#services"
+      "to": "#services"
     },
     {
       "id": 6,
       "name": "feedbacks",
-      "to":"#feedbacks"
+      "to": "#feedbacks"
     }
-    
   ],
   "projects": [
     {
@@ -145,6 +144,39 @@
       "department": "",
       "feedbackText": "This is a perfect starting message because it doesn’t require the customer to give up plenty of personal data, which reduces overall friction and leads to more online reviews.",
       "rating": "3"
+    },
+    {
+      "firstname": "",
+      "lastname": "",
+      "phone": "",
+      "mail": "",
+      "department": "",
+      "feedbackText": "",
+      "rating": 0,
+      "agreement": false,
+      "id": "YwUmRln"
+    },
+    {
+      "firstname": "Maximilian",
+      "lastname": "MALS",
+      "phone": "",
+      "mail": "2nx23@ukr.net",
+      "department": "Development",
+      "feedbackText": " Maximilian  Maximilian  Maximilian  Maximilian  Maximilian  Maximilian  Maximilian  Maximilian  Maximilian ",
+      "rating": 5,
+      "agreement": true,
+      "id": "BQMlU1I"
+    },
+    {
+      "firstname": "Maximilian",
+      "lastname": "MALS",
+      "phone": "",
+      "mail": "2nx23@ukr.net",
+      "department": "Development",
+      "feedbackText": " Maximilian  Maximilian  Maximilian  Maximilian  Maximilian  Maximilian  Maximilian  Maximilian  Maximilian ",
+      "rating": 5,
+      "agreement": true,
+      "id": "UDcSeiH"
     }
   ]
 }

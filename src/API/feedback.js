@@ -13,7 +13,7 @@ export async function addFeedback(data) {
   try {
     await axios({
       method: 'post',
-      url: 'http://localhost:4000/feedback',
+      url: 'http://localhost:4000/feedbacks',
       data: {
         ...data,
       },
