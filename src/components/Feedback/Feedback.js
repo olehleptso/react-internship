@@ -19,6 +19,7 @@ function Feedback() {
     }, [setFeedbacks]);
 
     const onSubmitForm = async (feedback) => {
+        console.log(feedback);
         await addFeedback(feedback);
         const response = await getFeedbacks();
         setFeedbacks(response);

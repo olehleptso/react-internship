@@ -20,13 +20,13 @@ import axios from 'axios'
     }
     
     const initialErrors = {
-        firstname: { error:'', valid: true },
-        lastname: { error:'', valid: true },
-        mail: { error:'', valid: true },
-        department: { error:'', valid: true },
-        feedbackText: { error:'', valid: true },
-        rating: { error:'', valid: true },
-        agreement: { error:'', valid: true }
+        firstname: { error:'', valid: false },
+        lastname: { error:'', valid: false },
+        mail: { error:'', valid: false },
+        department: { error:'', valid: false },
+        feedbackText: { error:'', valid: false },
+        rating: { error:'', valid: false },
+        agreement: { error:'', valid: false }
     };
 
     const [feedback, setFeedback] = useState(initialValues)
@@ -89,7 +89,7 @@ import axios from 'axios'
             case 'feedbackText':
                 if (!value) {
                     setFormErrors({...formErrors, [name]: {error:"Enter a feedback text", valid: false}})
-                } else if(value.length <100) {
+                } else if(value.length <10) {
                     setFormErrors({...formErrors, [name]: {error:"Feedback must be longer that 100 symbols", valid: false}})
                 } else if(value.length >150) {
                     setFormErrors({...formErrors, [name]: {error:"Feedback must be shorter that 150 symbols", valid: false}})
@@ -124,20 +124,24 @@ import axios from 'axios'
         validate(event.target.name, event.target.value)
     }
 
-    // async function sendData () {
-    //     console.log(feedback)
-    //     feedback.created_at = Date.now();
-    //     await axios({ 
-    //         method:'post',
-    //         url:'http://localhost:4000/feedbacks',
-    //         data: {...feedback}
-    //     })}
-
-
     const handleSubmit = (e) => {
+        let validated = false;
         e.preventDefault();
         setFormErrors(validateAll(feedback));
-        onSubmit(feedback);
+        Object.values(formErrors).map((data) => {
+            console.log(data)
+            if (data.valid === true) {
+                validated = true 
+            } else {
+                validated = false
+            }
+            
+        })
+        if (validated === true) {
+            onSubmit(feedback);
+            closeModal();
+        }
+        
     };
     
     const validateAll = (values) => {
@@ -180,7 +184,7 @@ import axios from 'axios'
           if (!values.feedbackText) {
               errors.feedbackText.error = "Enter a feedback text";
               errors.feedbackText.valid = false
-          } else if(values.feedbackText.length <100) {
+          } else if(values.feedbackText.length <10) {
               errors.feedbackText.error = "Feedback must be longer that 100 symbols"
               errors.feedbackText.valid = false
           }
