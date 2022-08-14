@@ -11,7 +11,7 @@ function HeaderInfo () {
             <Text text='We are a new design studio based in USA. We have over
               20 years of combined experience, and know a thing or two
               about designing websites and mobile apps.' styles='gray'/>
-            <Button text='contact us' styles='primary'/>
+            <Button text='contact us' styles='primary' href="#feedbacks"/>
           </div>
         </div>
       </div>
