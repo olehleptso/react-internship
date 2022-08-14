@@ -22,7 +22,7 @@ function Services() {
     }
 
     return (
-        <div className='services' id="services">
+        <div className='services' id="services" data-testid="Services">
             <div className='services-inner'>
                 {services.map((data, index) => {
                     return <ServicesItem data={data} key={index}></ServicesItem>

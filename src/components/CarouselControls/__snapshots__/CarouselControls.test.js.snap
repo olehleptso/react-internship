@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders search CarouselControls component 1`] = `
+<DocumentFragment>
+  <div
+    class="carousel-controls"
+    data-testid="CarouselControls"
+  >
+    <div
+      class="controls-inner"
+    >
+      <button
+        class="previous btn"
+      >
+        &lt; previous project
+      </button>
+      <img
+        src="squares.png"
+      />
+      <button
+        class="next btn"
+      >
+        next project &gt;
+      </button>
+    </div>
+  </div>
+</DocumentFragment>
+`;

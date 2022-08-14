@@ -3,7 +3,7 @@ import Text from '../Text/Text';
 
 function CarouselItem ({data}) {
     return (
-            <div className='carousel-item'>
+            <div className='carousel-item' data-testid="CarouselItem">
                 <div className='item-info-container'>
                     <div className='item-info'>
                         <Text styles='title' text={data.name}/>

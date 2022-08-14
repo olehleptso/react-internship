@@ -86,9 +86,9 @@ import InputMask from "react-input-mask";
                 if (!value) {
                     setFormErrors({...formErrors, [name]: {error:"Enter a feedback text", valid: false}})
                 } else if(value.length <10) {
-                    setFormErrors({...formErrors, [name]: {error:"Feedback must be longer that 100 symbols", valid: false}})
-                } else if(value.length >150) {
-                    setFormErrors({...formErrors, [name]: {error:"Feedback must be shorter that 150 symbols", valid: false}})
+                    setFormErrors({...formErrors, [name]: {error:"Feedback must be longer that 10 symbols", valid: false}})
+                } else if(value.length >200) {
+                    setFormErrors({...formErrors, [name]: {error:"Feedback must be shorter that 200 symbols", valid: false}})
                 } else {
                     setFormErrors({
                       ...formErrors,
@@ -180,11 +180,11 @@ import InputMask from "react-input-mask";
               errors.feedbackText.error = "Enter a feedback text";
               errors.feedbackText.valid = false
           } else if(values.feedbackText.length <10) {
-              errors.feedbackText.error = "Feedback must be longer that 100 symbols"
+              errors.feedbackText.error = "Feedback must be longer that 10 symbols"
               errors.feedbackText.valid = false
           }
-          else if(values.feedbackText.length >150) {
-              errors.feedbackText.error = "Feedback must be shorter that 150 symbols"
+          else if(values.feedbackText.length >200) {
+              errors.feedbackText.error = "Feedback must be shorter that 200 symbols"
               errors.feedbackText.valid = false
           }
           if (!values.rating) {
@@ -200,7 +200,7 @@ import InputMask from "react-input-mask";
 
 
     return (
-            <div className='form'>
+            <div className='form' data-testid="FeedbackForm">
                 <form className='form-inner' onSubmit={handleSubmit}>
                     <label>
                         <input 

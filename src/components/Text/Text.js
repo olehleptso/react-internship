@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 function Text ({text, styles}) {
     return (
-        <div className={styles}>
+        <div className={styles} data-testid="Text">
             {text}
         </div>
     )

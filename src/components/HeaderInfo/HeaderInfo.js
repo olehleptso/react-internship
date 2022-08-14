@@ -4,7 +4,7 @@ import Button from '../Button/Button';
 
 function HeaderInfo () {
     return (
-        <div className="header-info">
+        <div className="header-info" data-testid="HeaderInfo">
         <div className="header-info-content">
           <div className="header-info-wrapper">
             <Text text='We Design and develop' styles='title'/>

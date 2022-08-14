@@ -28,7 +28,7 @@ function Feedback() {
     const filtered = feedbacks ? feedbacks.filter((item) => item.rating >= 3.5).slice(-3).reverse()  : null;
 
     return (
-        <div id="feedbacks">
+        <div id="feedbacks" data-testid="Feedback">
             <Feedbacks data={filtered}/>
             <div className='feedback-container'>
                 <div className='feedback-inner'>

@@ -3,7 +3,7 @@ import './Modal.css';
 
 function Modal ({children, close}) {
     return (
-    <div className="modal" onClick={close}>
+    <div className="modal" onClick={close} data-testid="Modal">
         {children}
     </div>
     )

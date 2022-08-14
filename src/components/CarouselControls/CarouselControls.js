@@ -3,7 +3,7 @@ import squares from '../../images/squares.png';
 
 function CarouselControls ({prev, next, more}) {
     return (
-            <div className='carousel-controls'>
+            <div className='carousel-controls' data-testid="CarouselControls">
                 <div className='controls-inner'>
                     <button className='previous btn' onClick={prev}>{'< '}previous project</button>
                     <img src={squares} onClick={more}/>

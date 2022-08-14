@@ -3,7 +3,7 @@ import './Footer.css'
 
 function Footer() {
   return (
-    <div className='footer'>
+    <div className='footer' data-testid="Footer">
         <div className='footer-inner'>
             <div className='inc'>
                 <div>

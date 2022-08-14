@@ -15,18 +15,18 @@ function Header () {
     }, []);
 
     return (
-            <div className="header"  id="home">
-                <img src={logo} alt="Logo"/>
-                <div className="header-menu">
-                    <ul className="header-nav">
-                        {menuItems.map((data) => (
-                            <li key={data.id}>
-                                <a href={data.to}>{data.name}</a>
-                            </li>
-                        ))}
-                    </ul>
-                </div>
+        <div className="header"  id="home" data-testid="Header">
+            <img src={logo} alt="Logo"/>
+            <div className="header-menu">
+                <ul className="header-nav">
+                    {menuItems.map((data) => (
+                        <li key={data.id}>
+                            <a href={data.to}>{data.name}</a>
+                        </li>
+                    ))}
+                </ul>
             </div>
+        </div>
     );
 }
 

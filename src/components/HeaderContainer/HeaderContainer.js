@@ -4,7 +4,7 @@ import './HeaderContainer.css';
 
 function HeaderContainer () {
     return (
-        <div className='container'>
+        <div className='container' data-testid="HeaderContainer">
             <Header/>
             <HeaderInfo/>
         </div>
