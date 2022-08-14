@@ -1,5 +1,5 @@
 .form { 
-    width: 30vw;
+    width: 27vw;
     height: 80vh;
     background-color: rgb(240, 240, 240);
     position: fixed;
@@ -38,8 +38,9 @@ label {
 }
 
 textarea {
+    padding-top: 1rem;
     resize: none;
-    height: 1000px;
+    height: 10rem !important;
 }
 
 .controls {
@@ -76,6 +77,14 @@ textarea {
     font-size: 12px;
     position: absolute;
     bottom: -20px;
-    left: 10px;
+    left: 15px;
     color: rgb(226, 0, 0);
+}
+
+.star-error {
+    left: 130px;
+}
+
+.agreement-error {
+    left: 110px;
 }

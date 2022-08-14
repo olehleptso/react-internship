@@ -288,7 +288,7 @@ import './FeedbackForm.css'
                                 );
                             })}
                         </div>
-                        {!formErrors.rating.valid ? <span className='error'>{formErrors.rating.error}</span>:''}
+                        {!formErrors.rating.valid ? <span className='error star-error'>{formErrors.rating.error}</span>:''}
                     </label>
                     <label>
                         <input 
@@ -299,7 +299,7 @@ import './FeedbackForm.css'
                             onChange={(event) => setFeedback({...feedback, agreement:event.target.checked})}
                         />
                         I agree to the processing of personal data
-                        {!formErrors.agreement.valid ? <span className='error'>{formErrors.agreement.error}</span>:''}
+                        {!formErrors.agreement.valid ? <span className='error agreement-error'>{formErrors.agreement.error}</span>:''}
                     </label>    
                     <div className='controls'>
                         <Button styles='primary' text='submit' type='submit' />
