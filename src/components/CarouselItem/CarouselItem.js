@@ -1,5 +1,4 @@
 import './CarouselItem.css';
-import breakfast from '../../images/breakfast.jpg';
 import Text from '../Text/Text';
 
 function CarouselItem ({data}) {

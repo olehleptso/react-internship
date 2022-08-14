@@ -1,4 +1,3 @@
-
 import FeedbackItem from '../FeedbackItem/FeedbackItem';
 import './Feedbacks.css'
 

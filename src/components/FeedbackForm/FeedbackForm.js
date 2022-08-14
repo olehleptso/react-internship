@@ -1,11 +1,6 @@
-import { eventWrapper } from '@testing-library/user-event/dist/utils'
 import React, { useState } from 'react'
 import Button from '../Button/Button'
-import Modal from '../Modal/Modal'
 import './FeedbackForm.css'
-import axios from 'axios'
-
-
 
  function FeedbackForm({closeModal, onSubmit}) {
     const initialValues = {

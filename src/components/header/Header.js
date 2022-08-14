@@ -2,8 +2,6 @@ import './Header.css';
 import logo from '../../images/logo.png';
 import React, {useEffect, useState} from 'react';
 
-
-
 function Header () {
     const [menuItems, setItems] = useState([]);
 
