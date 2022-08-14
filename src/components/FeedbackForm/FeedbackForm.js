@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import Button from '../Button/Button'
 import './FeedbackForm.css'
+import InputMask from "react-input-mask";
 
  function FeedbackForm({closeModal, onSubmit}) {
     const initialValues = {
@@ -124,7 +125,6 @@ import './FeedbackForm.css'
         e.preventDefault();
         setFormErrors(validateAll(feedback));
         Object.values(formErrors).map((data) => {
-            console.log(data)
             if (data.valid === true) {
                 validated = true 
             } else {
@@ -225,14 +225,14 @@ import './FeedbackForm.css'
                             {!formErrors.lastname.valid ? <span className='error'>{formErrors.lastname.error}</span>:''}
                     </label>
                     <label>
-                        <input 
+                        {/* <input 
                             name="phone"
                             value={feedback.phone}
                             className='input'
                             placeholder='Phone' 
                             onChange={handleChange}
-                            onBlur={validationHandler}
-                        />
+                        /> */}
+                        <InputMask className='input' name='phone' value={feedback.phone} placeholder='Phone'  mask="+380\-(99)-999-99-99" onChange={handleChange} />
                     </label> 
                     <label>
                         <input 
