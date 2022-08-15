@@ -16,6 +16,12 @@
     height: 32px;
     margin: auto;
     cursor: pointer;
+    transition: width 1s, height 1s;
+}
+
+.controls-inner img:hover {
+    width: 42px;
+    height: 42px;
 }
 
 .btn {
@@ -31,4 +37,8 @@
     letter-spacing: 1px;
     padding: 0;
     margin: auto 0;
+}
+
+.btn:hover {
+    color: rgb(0, 201, 201);
 }

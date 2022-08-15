@@ -1,3 +1,27 @@
+@keyframes form {
+    from {
+
+        left: 100%;
+    }
+    to {
+        left:35%
+    }
+}
+
+@keyframes reverse {
+    from {
+
+        left:35%;
+    }
+    to{
+
+        left: 100%;
+    }
+}
+
+
+
+
 .form { 
     width: 27vw;
     height: 80vh;
@@ -8,7 +32,24 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    animation-name: form;
+    animation-duration: 2s;
 }
+
+.formClose {
+    width: 27vw;
+    height: 80vh;
+    background-color: rgb(240, 240, 240);
+    position: fixed;
+    top:10%;
+    left: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation-name: reverse;
+    animation-duration: 2s;
+}
+
 
 .form-inner {
     display: flex;

@@ -4,6 +4,7 @@ import './FeedbackForm.css'
 import InputMask from "react-input-mask";
 
  function FeedbackForm({closeModal, onSubmit}) {
+    const[active,setActive] = useState(true)
     const initialValues = {
         firstname: '',
         lastname: '',
@@ -198,9 +199,9 @@ import InputMask from "react-input-mask";
           return errors;
     }
 
-
+    // {`form ${active?'formClose':''}`}
     return (
-            <div className='form' data-testid="FeedbackForm">
+            <div className={active? 'form':'formClose'} data-testid="FeedbackForm">
                 <form className='form-inner' onSubmit={handleSubmit}>
                     <label>
                         <input 
@@ -303,9 +304,18 @@ import InputMask from "react-input-mask";
                     </label>    
                     <div className='controls'>
                         <Button styles='primary' text='submit' type='submit' />
-                        <Button styles='primary' text='cancel' onclick={()=> closeModal(false)}/>
+                        <Button styles='primary' text='cancel' type="button" onclick={
+                    ()=> {
+                        setActive(!active);
+                        setTimeout(()=> {
+                            closeModal()
+                            }, 2000)  
+                        }
+                    }
+                        />
                     </div>
                 </form>
+                
             </div>
     )
 }
