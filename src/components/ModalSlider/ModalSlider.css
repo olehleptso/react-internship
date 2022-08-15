@@ -1,3 +1,11 @@
+.mdl {
+    position: fixed;
+    inset:0;
+    display: grid;
+    place-items: center;
+}
+
+
 .modal-slider {
     position: relative;
     margin: 2rem;
@@ -70,4 +78,14 @@
 
 .modal-image:hover {
     cursor: zoom-in;
+}
+
+.arrow {
+    color: #ffffff81;
+    cursor: pointer;
+    font-size: 62px;
+}
+
+.arrow:hover {
+    color: white;
 }

@@ -209,7 +209,7 @@ import Modal from '../Modal/Modal';
                     setTimeout(()=> {
                         closeModal()
                     }, 2000)  
-                }}/>
+                }} opened={active}/>
             <div className={active? 'form':'formClose'} data-testid="FeedbackForm">
                 
                 <form className='form-inner' onSubmit={handleSubmit}>

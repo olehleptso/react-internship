@@ -1,8 +1,32 @@
+@keyframes modal {
+    from {background-color: rgba(0, 0, 0, 0);}
+    to {background-color: rgba(0, 0, 0, 0.75);}
+}
+
+@keyframes modalClose {
+    from {background-color: rgba(0, 0, 0, 0.75);}
+    to {background-color: rgba(0, 0, 0, 0);}
+}
+
+
+
 .modal {
     position: fixed;
     inset: 0;
     background-color: rgba(0, 0, 0, 0.75);
     display: grid;
     place-items: center;
-    transition: opacity 250ms ease-in-out;
+    animation-name: modal;
+    animation-duration: 1s;
 }
+
+.modalClose {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0);
+    display: grid;
+    place-items: center;
+    animation-name: modalClose;
+    animation-duration: 1s;
+}
+

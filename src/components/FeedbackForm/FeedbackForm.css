@@ -33,7 +33,7 @@
     justify-content: center;
     align-items: center;
     animation-name: form;
-    animation-duration: 2s;
+    animation-duration: 1s;
 }
 
 .formClose {
@@ -47,7 +47,7 @@
     justify-content: center;
     align-items: center;
     animation-name: reverse;
-    animation-duration: 2s;
+    animation-duration: 1s;
 }
 
 

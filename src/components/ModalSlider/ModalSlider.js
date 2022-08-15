@@ -7,6 +7,7 @@ function ModalSlider({closeModal, data}) {
 
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isSingle, setIsSingle] = useState(false);
+  const [active, setActive] = useState(true);
   
   
   const prev = () => {
@@ -26,7 +27,13 @@ function ModalSlider({closeModal, data}) {
 
 
   return (
-    <Modal>
+    <div className='mdl'>
+      <Modal close={
+      ()=> {
+          setActive(!active)
+          setTimeout(()=>closeModal(false), 500);
+      }} opened={active}>
+      </Modal>
         {isSingle ? 
         <div className='modal-controls'>
           <div className='modal-btn-container'>
@@ -36,9 +43,13 @@ function ModalSlider({closeModal, data}) {
         : 
         <div className='modal-controls'>
           <div className='modal-btn-container'>
-            <button className="modal-btn" onClick={prev}>{'<'}</button>
-            <button className="modal-btn" onClick={()=>closeModal(false)}>X</button>
-            <button className="modal-btn" onClick={next}>{'>'}</button>
+            <span className="arrow" onClick={prev}>&#129080;</span>
+            <span className="arrow" onClick={()=>{
+              setActive(!active)
+              setTimeout(()=>closeModal(false), 500)
+            }}>&#10006;</span>
+            
+            <span className="arrow" onClick={next}>&#129082;</span>
           </div>
           <div className='modal-indicator-container'>
           {data.map((data, index) => {
@@ -67,7 +78,9 @@ function ModalSlider({closeModal, data}) {
           })}
         </div>}
       </div>
-    </Modal>
+    </div>
+    
+    
       
   )
 }

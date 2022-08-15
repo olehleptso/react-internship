@@ -8,7 +8,7 @@ function Carousel () {
 
     const [currentSlide, setCurrentSlide] = useState(0);
     const [projectData, setProjectData] = useState([]);
-    const [openModal, setOpenModal] = useState(false);
+    const [watching, setWatching] = useState(false);
 
     const prev = () => {
         const index = currentSlide > 0 ? currentSlide - 1 : projectData.length - 1;
@@ -19,10 +19,6 @@ function Carousel () {
         const index = currentSlide < projectData.length - 1 ? currentSlide + 1 : 0;
         setCurrentSlide(index);
       }
-    
-    const more = () => {
-        setOpenModal(true);
-    }
     
     useEffect(()=>{
         async function getProjectData() {
@@ -46,9 +42,9 @@ function Carousel () {
                                 </div>
                     })}
                 </div>
-                <CarouselControls prev={prev} next={next} more={more}/>
+                <CarouselControls prev={prev} next={next} more={()=> setWatching(true)}/>
             </div>
-            {openModal && <ModalSlider closeModal={setOpenModal} data={projectData[currentSlide].images} />}
+            {watching ? <ModalSlider closeModal={setWatching} data={projectData[currentSlide].images} /> : ''}
         </div>
     )
 }
