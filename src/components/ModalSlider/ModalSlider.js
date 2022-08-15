@@ -37,7 +37,7 @@ function ModalSlider({closeModal, data}) {
         {isSingle ? 
         <div className='modal-controls'>
           <div className='modal-btn-container'>
-            <button className="modal-btn" onClick={back}>{'<'}</button>
+            <span className="arrow" onClick={back}>&#60;</span>
           </div> 
         </div>
         : 

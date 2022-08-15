@@ -136,7 +136,10 @@ import Modal from '../Modal/Modal';
         })
         if (validated === true) {
             onSubmit(feedback);
-            closeModal();
+            setActive(!active);
+            setTimeout(()=> {
+                closeModal()
+            }, 2000) 
         }
         
     };
@@ -200,7 +203,6 @@ import Modal from '../Modal/Modal';
           return errors;
     }
 
-    // {`form ${active?'formClose':''}`}
     return (
         <div>
             <Modal close={
