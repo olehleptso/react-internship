@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import Button from '../Button/Button'
 import './FeedbackForm.css'
 import InputMask from "react-input-mask";
+import Modal from '../Modal/Modal';
 
  function FeedbackForm({closeModal, onSubmit}) {
     const[active,setActive] = useState(true)
@@ -201,7 +202,16 @@ import InputMask from "react-input-mask";
 
     // {`form ${active?'formClose':''}`}
     return (
+        <div>
+            <Modal close={
+                ()=> {
+                    setActive(!active);
+                    setTimeout(()=> {
+                        closeModal()
+                    }, 2000)  
+                }}/>
             <div className={active? 'form':'formClose'} data-testid="FeedbackForm">
+                
                 <form className='form-inner' onSubmit={handleSubmit}>
                     <label>
                         <input 
@@ -317,6 +327,8 @@ import InputMask from "react-input-mask";
                 </form>
                 
             </div>
+        </div>
+        
     )
 }
 

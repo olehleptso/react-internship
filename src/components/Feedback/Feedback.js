@@ -37,10 +37,10 @@ function Feedback() {
                     <Button styles='primary' text='give feedback' onclick={()=> setGivingFeedback(true)}/>
                 </div>
                 {givingFeedback ? 
-                    <div>
-                        <Modal close={()=>setGivingFeedback(false)}/>
+
+                        
                         <FeedbackForm closeModal={setGivingFeedback} onSubmit={onSubmitForm}/>
-                    </div>
+
                     : 
                     ''
                 }
